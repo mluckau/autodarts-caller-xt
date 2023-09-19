@@ -76,6 +76,7 @@ SUPPORTED_SOUND_FORMATS = [".mp3", ".wav"]
 SUPPORTED_GAME_VARIANTS = ["X01", "Cricket", "Random Checkout"]
 SUPPORTED_CRICKET_FIELDS = [15, 16, 17, 18, 19, 20, 25]
 BOGEY_NUMBERS = [169, 168, 166, 165, 163, 162, 159]
+SCHNAPSZAHLEN = [111, 222, 333, 444, 555, 666, 777, 888]
 
 CALLER_LANGUAGES = {
     1: [
@@ -1361,6 +1362,19 @@ def process_match_x01(m):
             },
         }
         broadcast(dartsThrown)
+
+        if remainingPlayerScore in SCHNAPSZAHLEN:
+            schnapszahl = {
+                "event": "schnapszahl",
+                "player": currentPlayerName,
+                "game": {
+                    "mode": variant,
+                    "pointsLeft": str(remainingPlayerScore),
+                },
+            }
+
+            broadcast(schnapszahl)
+            play_sound_effect("schnaps")
 
         play_sound_effect(points)
 
