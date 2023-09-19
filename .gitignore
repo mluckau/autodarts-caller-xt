@@ -6,3 +6,5 @@
 *raw*.csv
 test.py
 __pycache__
+start_custom.sh
+.venv
