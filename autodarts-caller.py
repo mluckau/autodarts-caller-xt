@@ -1374,6 +1374,7 @@ def process_match_x01(m):
             }
 
             broadcast(schnapszahl)
+            ppi(f"Schnapszahl! [{remainingPlayerScore}, {currentPlayerName}]")
             play_sound_effect("schnaps")
 
         play_sound_effect(points)
