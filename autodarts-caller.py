@@ -1375,7 +1375,11 @@ def process_match_x01(m):
 
             broadcast(schnapszahl)
             ppi(f"Schnapszahl! [{remainingPlayerScore}, {currentPlayerName}]")
-            play_sound_effect("schnaps")
+            if AUDIO_CALLER_VOLUME is not None:
+                # Alarm immer auf volle Lautstärke abspielen
+                play_sound_effect("schnaps", True, volume_mult=1 / AUDIO_CALLER_VOLUME)
+            else:
+                play_sound_effect("schnaps", True, volume_mult=1)
 
         play_sound_effect(points)
 
